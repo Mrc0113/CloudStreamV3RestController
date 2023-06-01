@@ -1,0 +1,25 @@
+server:
+  port: 8094
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+  cloud:
+    stream:
+      binders:
+        local-solace:
+          type: solace
+          environment:
+            solace:
+              java:
+                host: tcp://localhost:55554
+                msgVpn: default
+                clientUsername: default
+                clientPassword: default
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 
+        - bindings
+        - "*"
